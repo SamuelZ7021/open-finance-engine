@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/openfinance
+    username: admin
+    password: ${DB_PASSWORD:secretpassword}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    # Under the hood: Explicitly setting the dialect avoids the initial
+    # metadata connection attempt if the DB is temporarily unreachable or
+    # during certain GraalVM native image build steps.
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update

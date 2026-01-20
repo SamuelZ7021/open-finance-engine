@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # ----------------------------
+  # DATABASE
+  # ----------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: openfinance-db
+    restart: always
+    environment:
+      POSTGRES_DB: openfinance
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secretpassword
+    # Ports are optionals if backend is in the same network, 
+    # but nice to have exposed for local PGAdmin/DBeaver
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # ----------------------------
+  # BACKEND
+  # ----------------------------
+  backend:
+    build:
+      context: ./backend/backend
+      dockerfile: Dockerfile
+    container_name: openfinance-backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/openfinance
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: secretpassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Ensure port matches what app runs on (default 8080)
+    ports:
+      - "8080:8080"
+
+  # ----------------------------
+  # FRONTEND
+  # ----------------------------
+  frontend:
+    build:
+      context: ./openFinance-frontend
+      dockerfile: Dockerfile
+    container_name: openfinance-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
