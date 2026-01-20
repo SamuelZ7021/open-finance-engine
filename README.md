@@ -43,9 +43,4 @@
     npm install
     npm run dev
     ```
-
-### 💼 Commercial License
-Looking to build your own fintech unicorn? This engine handles the heavy lifting so you can focus on your unique value proposition. Contact us for licensing and support.
-
----
-*Built with ❤️ by the Open Finance Team*
+    ---
