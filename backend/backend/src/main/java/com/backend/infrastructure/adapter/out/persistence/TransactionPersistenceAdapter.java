@@ -52,7 +52,6 @@ public class TransactionPersistenceAdapter implements TransactionPort {
         entity.setDescription(domain.getDescription());
         entity.setIdempotencyKey(domain.getIdempotencyKey());
 
-        // CRITICAL SECTION: Mapping the Lines
         // We must map the domain lines to entity lines AND set the parent reference.
         List<TransactionLineEntity> lineEntities = domain.getLines().stream()
                 .map(line -> toLineEntity(line, entity)) // Pass the parent 'entity'
@@ -73,7 +72,6 @@ public class TransactionPersistenceAdapter implements TransactionPort {
         lineEntity.setAmount(domainLine.amount());
         lineEntity.setType(domainLine.type());
 
-        // THE FIX: Establish the relationship back to the parent.
         // Without this line, the foreign key 'transaction_id' in the DB will be NULL.
         lineEntity.setTransaction(parent);
 

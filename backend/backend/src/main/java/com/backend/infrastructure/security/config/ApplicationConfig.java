@@ -1,4 +1,3 @@
-// Archivo: backend/src/main/java/com/backend/infrastructure/security/config/ApplicationConfig.java
 package com.backend.infrastructure.security.config;
 
 import com.backend.infrastructure.adapter.out.persistence.repository.SpringDataUserRepository;

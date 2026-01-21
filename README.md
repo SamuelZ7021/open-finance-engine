@@ -1,7 +1,5 @@
 # Open Finance Engine
 
-![banner](/placeholder.jpg)
-
 ## 🚀 The Future of Open Finance Infrastructure
 
 **Open Finance Engine** is a high-performance, enterprise-grade financial core designed to power the next generation of fintech applications. Built with a robust **Java Spring Boot** backend and a sleek, responsive **React/TypeScript** frontend, this engine provides the essential building blocks for banking, investment, and analytics platforms.
@@ -31,6 +29,19 @@
 
 ### 🚀 Getting Started
 
+#### Option 1: Docker (Recommended for Mac, Windows, Linux)
+The easiest way to run the application is using Docker. Ensure you have Docker installed.
+
+1.  **Run the application**:
+    ```bash
+    docker-compose up --build
+    ```
+2.  **Access the application**:
+    *   Frontend: [http://localhost:80](http://localhost:80)
+    *   Backend: [http://localhost:8080](http://localhost:8080)
+
+#### Option 2: Manual Setup
+
 1.  **Clone the repository**
 2.  **Start the Backend**:
     ```bash
@@ -43,4 +54,6 @@
     npm install
     npm run dev
     ```
-    ---
+
+---
+
