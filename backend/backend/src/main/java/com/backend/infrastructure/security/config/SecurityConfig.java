@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-                    corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:80", "http://localhost", "https://open-finance-engine-69f1oqxlt-samuel-zapatas-projects.vercel.app")); // Tu puerto de Vite
+                    corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:80", "http://localhost", "https://open-finance-engine-3svp57qpw-samuel-zapatas-projects.vercel.app")); // Tu puerto de Vite
                     corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfiguration.setAllowedHeaders(List.of("*"));
                     corsConfiguration.setAllowCredentials(true);
